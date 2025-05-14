@@ -1,0 +1,153 @@
+table sales_silver
+	lineageTag: ddd43eaa-fca8-45de-a023-e9f54b8ce9ba
+	sourceLineageTag: [dbo].[sales_silver]
+
+	column SalesOrderNumber
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a0bc9fa2-9921-483a-b1c2-fa6deea60eaf
+		sourceLineageTag: SalesOrderNumber
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderLineNumber
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: af22691a-6582-4333-9a89-d0cbdb703c20
+		sourceLineageTag: SalesOrderLineNumber
+		summarizeBy: sum
+		sourceColumn: SalesOrderLineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 46c0a050-adfc-48ac-a1fb-97cf7d51109d
+		sourceLineageTag: OrderDate
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 031cb3e3-df4e-434d-bfe0-e119c67b5d59
+		sourceLineageTag: CustomerName
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a8f9139a-e4b0-4336-97bb-6a73524b5621
+		sourceLineageTag: Email
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7f6b2c45-9a73-4ad3-b7ea-268f8eb927fb
+		sourceLineageTag: Item
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 474f31ce-db81-437b-9966-487b875b533d
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		sourceProviderType: real
+		lineageTag: 32df518e-33f8-42c0-885b-b1c53a17220b
+		sourceLineageTag: UnitPrice
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Tax
+		dataType: double
+		sourceProviderType: real
+		lineageTag: 418fd3fe-4bca-4289-8b52-a937e1c503b2
+		sourceLineageTag: Tax
+		summarizeBy: sum
+		sourceColumn: Tax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FileName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b2b10401-ab1d-4839-8c77-c4a2142b8ed9
+		sourceLineageTag: FileName
+		summarizeBy: none
+		sourceColumn: FileName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsFlagged
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: b9503917-fffa-4427-90bc-f83cf4442717
+		sourceLineageTag: IsFlagged
+		summarizeBy: none
+		sourceColumn: IsFlagged
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedTS
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: f72a6e2c-2a63-4121-9656-9ebcd5411389
+		sourceLineageTag: CreatedTS
+		summarizeBy: none
+		sourceColumn: CreatedTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedTS
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: e578aee6-644f-4fe6-8753-a74f39dfc2e4
+		sourceLineageTag: ModifiedTS
+		summarizeBy: none
+		sourceColumn: ModifiedTS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition sales_silver = entity
+		mode: directLake
+		source
+			entityName: sales_silver
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
